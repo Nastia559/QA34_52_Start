@@ -50,19 +50,20 @@ public class First
 
         driver.navigate().refresh();     // обновление страницы
         WebElement divRoot = driver.findElement(By.cssSelector("div[id='root']"));
-        // #root
-        // [id='root']
-        // * [id='root']
-        System.out.println(divRoot.getTagName());
-        System.out.println(divRoot.getAttribute("class"));
+        // By.cssSelector - найди тег div с id root.
+        // div — это HTML-тег
 
-        WebElement divRoot1 = driver.findElement(By.id("root"));
+        // #root - короткая запись
+        // [id='root'] - элемент, у которого id равен root
+        // * [id='root']
+        System.out.println(divRoot.getTagName());  // получает название HTML-тега
+        System.out.println(divRoot.getAttribute("class")); // получает значение атрибута
+
+        WebElement divRoot1 = driver.findElement(By.id("root")); // поиск по id
         System.out.println(divRoot1.getTagName());
 
         WebElement divRoot2 = driver.findElement(By.className("container"));
-        System.out.println(divRoot2.getAttribute("id"));
-
-
+        System.out.println(divRoot2.getAttribute("id")); // поиск по class
         pause(3000);
 
         driver.close();                  //  закрыть окно (крестик на окне)
@@ -90,6 +91,8 @@ public class First
         pause(3000);
 
         WebElement linkTerms = driver.findElement(By.cssSelector("a.navigation-link[href='/terms-of-use']"));
+        // ссылка + нужный класс + нужный адрес
+
         //[href='/terms-of-use']
         //a[href*='of-use'] включает в себя
         //a[href^='/terms'] начинается
@@ -98,6 +101,7 @@ public class First
         pause(3000);
 
         WebElement linkSignUp = driver.findElement(By.cssSelector("div.header a.navigation-link:nth-child(5)"));
+        // Найди пятую ссылку с классом navigation-link, которая находится внутри div с классом header
         linkSignUp.click();
         pause(3000);
 
@@ -106,18 +110,22 @@ public class First
         pause(3000);
 
         WebElement logo = driver.findElement(By.cssSelector("div.header a:first-child"));
+        // последний ребёнок внутри родителя.
         logo.click();
         pause(3000);
 
         WebElement linkLetTheCar = driver.findElement(By.linkText("Let the car work"));
+        // поиск ссылки по её тексту
         linkLetTheCar.click();
         pause(3000);
+
         driver.navigate().back();
         pause(3000);
+
         WebElement linkLetTheCar1 = driver.findElement(By.partialLinkText("work"));
+        // поиск ссылки, где есть слово
         linkLetTheCar1.click();
         pause(3000);
-
 
             driver.quit();
     }
